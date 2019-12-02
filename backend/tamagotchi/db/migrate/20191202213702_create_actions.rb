@@ -1,6 +1,6 @@
-class CreatePlayerMoves < ActiveRecord::Migration[6.0]
+class CreateActions < ActiveRecord::Migration[6.0]
   def change
-    create_table :player_moves do |t|
+    create_table :actions do |t|
       t.belongs_to :pet, null: false, foreign_key: true
       t.belongs_to :action_type, null: false, foreign_key: true
 
