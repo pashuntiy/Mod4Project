@@ -1,2 +1,0 @@
-class PlayerMovesController < ApplicationController
-end
