@@ -20,10 +20,13 @@ code {
 
 .stats{
   padding: 2%;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .actions{
   padding-top: 5%;
+
 }
 
 .actions button{
@@ -36,4 +39,17 @@ code {
 
 .actions li{
   list-style-type: none;
+}
+
+.mood h1 {
+  top: 10%;
+  right: 13%;
+  position: fixed;
+}
+
+.mood img {
+  width: 20%;
+  top: 20%;
+  right: 5%;
+  position: fixed;
 }
