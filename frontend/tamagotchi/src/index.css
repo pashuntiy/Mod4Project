@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.pet-image {
+  padding: 4%;
+  width: 40%;
+  float: left;
+}
+
+.stats{
+  padding: 2%;
+}
+
+.actions{
+  padding-top: 5%;
+}
+
+.actions button{
+  margin: 1%;
+  padding: 1%;
+  border-radius: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.actions li{
+  list-style-type: none;
+}
