@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_213702) do
     t.integer "hunger", default: 100
     t.integer "social", default: 100
     t.integer "fun", default: 100
-    t.integer "hugiene", default: 100
+    t.integer "hygiene", default: 100
     t.string "image"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

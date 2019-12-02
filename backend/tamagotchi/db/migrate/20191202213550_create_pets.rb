@@ -5,7 +5,7 @@ class CreatePets < ActiveRecord::Migration[6.0]
       t.integer :hunger, default: 100
       t.integer :social, default: 100
       t.integer :fun, default: 100
-      t.integer :hugiene, default: 100
+      t.integer :hygiene, default: 100
       t.string :image
       t.belongs_to :user, null: false, foreign_key: true
 
