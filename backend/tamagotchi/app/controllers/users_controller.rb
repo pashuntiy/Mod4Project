@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
 
-  def index
-    users = User.all
-    render json: users
-  end
-
   def show
-    user = User.find(params[:id])
-    render json: user
+    user_id = params[:id]
+    if current_user_id == user_id.to_i
+      user = User.find(user_id)
+      render json: user
+    else
+      render json: { go_away: true }, status: :unauthorized
+    end
+
   end
 
   def create
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-      params.require(:pet).permit(:name, :password_digest)
+      params.require(:pet).permit(:name, :password)
   end
 
 end
