@@ -12,6 +12,13 @@ class PetsController < ApplicationController
 
   def create
     pet = Pet.create(pet_params)
+    render json: pet
+  end
+
+  def update
+    pet = Pet.find(params[:id])
+    pet.update(pet_update_params)
+    render json: pet
   end
 
   private
@@ -20,5 +27,8 @@ class PetsController < ApplicationController
       params.require(:pet).permit(:name, :user_id)
   end
 
+  def pet_update_params
+    params.require(:pet).permit(:hunger, :social, :fun, :hygiene)
+  end
 
 end
