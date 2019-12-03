@@ -3,6 +3,8 @@ import PetImage from './PetImage'
 import Stats from './Stats'
 import Actions from './Actions'
 import Mood from './Mood'
+import Pause from './Pause'
+import Save from './Save'
 import Timer from './Timer'
 
 export default class App extends Component {
@@ -13,7 +15,8 @@ export default class App extends Component {
     fun: 5,
     hygiene: 5,
     mood: "sad",
-    timer: 0
+    timer: 0,
+    intervalId: null
   }
 
   increaseStats = (event) => {
@@ -24,7 +27,7 @@ export default class App extends Component {
   }
 
   decreaseStats = () => {
-    window.setInterval(() => {
+    return window.setInterval(() => {
       const newHungerState = this.state.hunger === 0 ? 0 : this.state.hunger -1
       const newSocialState = this.state.social === 0 ? 0 : this.state.social -1
       const newFunState = this.state.fun === 0 ? 0 : this.state.fun -1
@@ -36,7 +39,7 @@ export default class App extends Component {
         fun: newFunState,
         hygiene: newHygieneState
       }, () => this.changeMood())
-    }, 30000)
+    }, 1000)
   }
 
   changeMood = () => {
@@ -55,8 +58,42 @@ export default class App extends Component {
     }
   }
 
+  pauseGame = () => {
+    window.clearInterval(this.state.intervalId)
+  }
+
+  saveGame = () => {
+    this.pauseGame()
+    console.log("clicked")
+    // fetch("http://localhost:3000/pets/1",{
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Accept": "application/json"
+    //   },
+    //   method: "PATCH",
+    //   body: JSON.stringify({
+    //     hunger: this.state.hunger,
+    //     social: this.state.social,
+    //     fun: this.state.fun,
+    //     hygiene: this.state.hygiene
+    //   })
+    // })
+
+    fetch('http://localhost:3000/pets/1', {
+      method: 'PATCH', // or 'PUT'
+      body: JSON.stringify({ fun: 10 }), // data can be `string` or {object}!
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(r => r.json()).then(resp => { console.log(resp) })
+  }
+
+
   componentDidMount(){
-    this.decreaseStats()
+    const intervalId = this.decreaseStats()
+    this.setState({
+      intervalId: intervalId
+    })
   }
 
   render(){
@@ -69,6 +106,8 @@ export default class App extends Component {
         <Actions hunger={this.state.hunger} social={this.state.social} fun={this.state.fun} hygiene={this.state.hygiene} increaseStats={this.increaseStats}/>
         <Mood mood={this.state.mood}/>
         {/* <Timer handleClick={this.decreaseStats}/> */}
+        <Pause handleClick={this.pauseGame}/>
+        <Save handleClick={this.saveGame}/>
       </div>
     )
   }

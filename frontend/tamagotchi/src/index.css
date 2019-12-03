@@ -64,3 +64,25 @@ code {
   font-size: 1rem;
   cursor: pointer;
 }
+
+.pause {
+  position: fixed;
+  bottom: 15%;
+  right: 18%;
+  margin: 1%;
+  padding: 1%;
+  border-radius: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.save {
+  position: fixed;
+  bottom: 15%;
+  right: 7%;
+  margin: 1%;
+  padding: 1%;
+  border-radius: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+}
