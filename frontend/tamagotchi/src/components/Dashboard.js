@@ -78,7 +78,7 @@ export default class Dashboard extends Component {
 
     render(){
         const petDiv = 
-        <Pet pet={this.state.selectedPet} seePet={this.state.seePet} handleClick={this.handlePetClick} />
+        <Pet pet={this.state.selectedPet} seePet={this.state.seePet} handleClick={this.handlePetClick} userID={this.props.userID} />
 
         const dashboardDiv = 
         <div className="dashboard">
