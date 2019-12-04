@@ -30,14 +30,35 @@ class Signup extends React.Component {
     })
     .then(r => r.json())
     .then(resp => {
-      if (resp.errors) {
+        if (resp.errors) {
         this.setState({
           errors: resp.errors,
           username: "",
           password: ""
         })
       } else {
-        this.props.setToken(resp)
+        fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            username: this.state.username,
+            password: this.state.password
+          })
+        })
+        .then(r => r.json())
+        .then(resp => {
+          if (resp.errors) {
+            this.setState({
+              errors: resp.errors,
+              username: "",
+              password: ""
+            })
+          } else {
+            this.props.setToken(resp)
+          }
+      })
       }
   })
 }

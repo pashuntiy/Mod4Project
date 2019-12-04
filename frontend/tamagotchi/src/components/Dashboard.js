@@ -29,9 +29,11 @@ export default class Dashboard extends Component {
                     "Accept": "application/json"
                 },
                 body: JSON.stringify({
+                  adopt_pet:{
                     user_id: this.props.userID,
                     pet_id: pet.id
-                })
+                }
+              })
             })
             .then(r => r.json)
             .then(resObj => {
@@ -42,7 +44,7 @@ export default class Dashboard extends Component {
         } else {
             alert("You've already adopted this pet!")
         }
-        
+
     }
 
     handleMyPetsClick = (pet) => {
@@ -77,10 +79,10 @@ export default class Dashboard extends Component {
     }
 
     render(){
-        const petDiv = 
+        const petDiv =
         <Pet pet={this.state.selectedPet} seePet={this.state.seePet} handleClick={this.handlePetClick} userID={this.props.userID} />
 
-        const dashboardDiv = 
+        const dashboardDiv =
         <div className="dashboard">
             <NavBar onClick={this.props.logOutClick} username={this.state.username} />
 
