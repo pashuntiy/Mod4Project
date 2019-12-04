@@ -142,3 +142,7 @@ code {
 .navbar h1{
   padding: 2%;
 }
+
+.welcome {
+  text-align: center;
+}
