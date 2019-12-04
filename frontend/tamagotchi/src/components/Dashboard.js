@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import Pet from './Pet'
 import PetCollection from './PetCollection'
+import NavBar from './NavBar'
 
 export default class Dashboard extends Component {
 
     state = {
         seePet: false,
         allPets: [],
+        myPets: [],
+        username: "",
         selectedPet: {}
     }
 
@@ -15,7 +18,6 @@ export default class Dashboard extends Component {
             selectedPet: pet,
             seePet: !this.state.seePet
         })
-        console.log(pet)
     }
 
     componentDidMount(){
@@ -26,11 +28,29 @@ export default class Dashboard extends Component {
                 allPets: resObj
             })
         })
+        fetch(`http://localhost:3000/users/${this.props.userID}`)
+        .then(r => r.json())
+        .then(resObj => {
+            this.setState({
+                myPets: resObj.pets,
+                username: resObj.username
+            })
+        })
     }
 
     render(){
-        const petDiv = <Pet pet={this.state.selectedPet} seePet={this.state.seePet} handleClick={this.handleClick} />
-        const dashboardDiv = <div className="dashboard"><h1>Hello from Dashboard</h1><PetCollection pets={this.state.allPets} handleClick={this.handleClick}/></div>
+        const petDiv = 
+        <Pet pet={this.state.selectedPet} seePet={this.state.seePet} handleClick={this.handleClick} />
+
+        const dashboardDiv = 
+        <div className="dashboard">
+            <NavBar onClick={this.props.logOutClick} username={this.state.username} />
+
+        <h3>All Pets</h3>
+        <PetCollection pets={this.state.allPets} handleClick={this.handleClick}/>
+        <h3>My Pets</h3>
+        <PetCollection pets={this.state.myPets} handleClick={this.handleClick}/>
+        </div>
 
         return(
             <div>

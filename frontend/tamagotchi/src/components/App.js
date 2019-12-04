@@ -39,8 +39,7 @@ export default class App extends Component {
     render(){
         return(
             <div>
-                {!!this.state.token ? <button onClick={this.logOutClick}>Logout</button> : ''}
-                {!!this.state.token ? (<Dashboard />) : (<Login setToken={this.setToken}/>)}
+                {!!this.state.token ? (<Dashboard userID={this.state.loggedInUserId} logOutClick={this.logOutClick}/>) : (<Login setToken={this.setToken}/>)}
             </div>
         )
     }
