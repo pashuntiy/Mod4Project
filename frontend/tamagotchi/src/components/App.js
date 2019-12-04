@@ -29,7 +29,7 @@ export default class App extends Component {
 
     logOutClick = () => {
       localStorage.clear()
-      
+
       this.setState({
         loggedInUserId: null,
         token: null

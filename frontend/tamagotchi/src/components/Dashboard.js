@@ -1,23 +1,21 @@
 import React, { Component } from 'react'
-import Pet from './Pet.js'
+import Pet from './Pet'
+import PetCollection from './PetCollection'
 
 export default class Dashboard extends Component {
 
     state = {
         seePet: false,
-        allPets: []
+        allPets: [],
+        selectedPet: {}
     }
 
-    handleClick = () => {
+    handleClick = (pet) => {
         this.setState({
+            selectedPet: pet,
             seePet: !this.state.seePet
         })
-    }
-
-    getPetImages = () => {
-       return this.state.allPets.map((pet) => {
-           return <img src={pet.image} alt="pet" key={pet.id}/>
-        })
+        console.log(pet)
     }
 
     componentDidMount(){
@@ -31,13 +29,12 @@ export default class Dashboard extends Component {
     }
 
     render(){
-        const petImages = this.getPetImages()
-        const petDiv = <Pet seePet={this.state.seePet} handleClick={this.handleClick} />
-        const dashboardDiv = <div className="dashboard"><h1>Hello from Dashboard</h1>{petImages}<br /><button onClick={this.handleClick}>See Your Pet</button></div>
+        const petDiv = <Pet pet={this.state.selectedPet} seePet={this.state.seePet} handleClick={this.handleClick} />
+        const dashboardDiv = <div className="dashboard"><h1>Hello from Dashboard</h1><PetCollection pets={this.state.allPets} handleClick={this.handleClick}/></div>
 
         return(
             <div>
-                {this.state.seePet ? petDiv : dashboardDiv}
+                { this.state.seePet ? petDiv : dashboardDiv }
             </div>
         )
     }
