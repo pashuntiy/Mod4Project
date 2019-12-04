@@ -54,7 +54,7 @@ export default class Login extends Component {
 
               {this.state.errors.map(error => <p>{ error }</p>)}
 
-                <h1>Hello from Login</h1>
+                <h1>Login</h1>
                 <form>
                     <label>Username: </label>
                     <input onChange={this.onChange} name="username" type="text"/>

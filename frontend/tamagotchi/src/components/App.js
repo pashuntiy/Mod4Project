@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Login from './Login'
+import Signup from './Signup'
 import Dashboard from './Dashboard'
 
 export default class App extends Component {
@@ -48,7 +49,7 @@ export default class App extends Component {
     render(){
         return(
             <div>
-                {!!this.state.token ? (<Dashboard userID={this.state.loggedInUserId} logOutClick={this.logOutClick}/>) : (<Login setToken={this.setToken}/>)}
+                {!!this.state.token ? (<Dashboard userID={this.state.loggedInUserId} logOutClick={this.logOutClick}/>) : (<div><Login setToken={this.setToken}/> <Signup setToken={ this.setToken } /></div> )}
             </div>
         )
     }
