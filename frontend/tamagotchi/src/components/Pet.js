@@ -16,7 +16,8 @@ export default class App extends Component {
         hygiene: 5,
         mood: "sad",
         // timer: 0,
-        intervalId: null
+        intervalId: null,
+        adoptPetID: null
     }
 
     increaseStats = (event) => {
@@ -64,7 +65,7 @@ export default class App extends Component {
 
     saveGame = () => {
         this.pauseGame()
-        fetch(`http://localhost:3000/pets/${this.props.pet.id}`, {
+        fetch(`http://localhost:3000/adopt_pets/${this.state.adoptPetID}`, {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
@@ -84,14 +85,17 @@ export default class App extends Component {
         this.setState({
             intervalId: intervalId
         })
-        fetch(`http://localhost:3000/pets/${this.props.pet.id}`)
+        fetch(`http://localhost:3000/users/${this.props.userID}`)
         .then(r => r.json())
         .then(resObj => {
+            const thisPet = resObj.adopt_pets.find(element => element.pet_id === this.props.pet.id)
+            // console.log(thisPet)
             this.setState({
-                hunger: resObj.hunger,
-                social: resObj.social,
-                fun: resObj.fun,
-                hygiene: resObj.hygiene
+                hunger: thisPet.hunger,
+                social: thisPet.social,
+                fun: thisPet.fun,
+                hygiene: thisPet.hygiene,
+                adoptPetID: thisPet.id
             }, () => {
                 this.changeMood()
             })
