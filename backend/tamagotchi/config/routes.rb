@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :adopt_pets
   resources :actions
   resources :action_types
   resources :pets

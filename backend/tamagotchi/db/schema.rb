@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_213702) do
+ActiveRecord::Schema.define(version: 2019_12_04_144827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2019_12_02_213702) do
     t.index ["pet_id"], name: "index_actions_on_pet_id"
   end
 
+  create_table "adopt_pets", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pet_id"], name: "index_adopt_pets_on_pet_id"
+    t.index ["user_id"], name: "index_adopt_pets_on_user_id"
+  end
+
   create_table "pets", force: :cascade do |t|
     t.string "name"
     t.integer "hunger", default: 5
@@ -37,10 +46,8 @@ ActiveRecord::Schema.define(version: 2019_12_02_213702) do
     t.integer "fun", default: 5
     t.integer "hygiene", default: 5
     t.string "image"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,5 +59,6 @@ ActiveRecord::Schema.define(version: 2019_12_02_213702) do
 
   add_foreign_key "actions", "action_types"
   add_foreign_key "actions", "pets"
-  add_foreign_key "pets", "users"
+  add_foreign_key "adopt_pets", "pets"
+  add_foreign_key "adopt_pets", "users"
 end

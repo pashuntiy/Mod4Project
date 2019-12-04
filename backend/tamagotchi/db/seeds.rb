@@ -7,8 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #
+
+User.destroy_all
+Pet.destroy_all
+AdoptPet.destroy_all
+
 user1 = User.create(username: 'Ethan', password: '123')
 user2 = User.create(username: 'Pavel', password: '123')
 
-pet1 = Pet.create(name: 'Bobik', image: "http://clipart-library.com/img1/729125.png", user_id: user1.id)
-pet2 = Pet.create(name: 'Sharik', image: 'http://clipart-library.com/img/729263.png', user_id: user2.id)
+pet1 = Pet.create(name: 'Bobik', image: 'http://clipart-library.com/img1/729125.png')
+pet2 = Pet.create(name: 'Sharik', image: 'http://clipart-library.com/img/729263.png')
+
+
+adopt_pet1 = AdoptPet.create(user: user1, pet: pet1)
+adopt_pet2 = AdoptPet.create(user: user2, pet: pet2)
