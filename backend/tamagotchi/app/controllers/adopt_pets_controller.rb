@@ -13,7 +13,7 @@ class AdoptPetsController < ApplicationController
   private
 
   def adopt_params
-      params.require(:adopt_pet).permit(:user, :pet)
+      params.permit(:user_id, :pet_id)
   end
 
 end

@@ -115,6 +115,7 @@ export default class App extends Component {
                 {/* <Timer handleClick={this.decreaseStats}/> */}
                 <Pause handleClick={this.pauseGame} />
                 <Save handleClick={this.saveGame} />
+                
             </div>
         )
     }

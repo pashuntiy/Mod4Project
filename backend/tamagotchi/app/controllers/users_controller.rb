@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-      params.require(:pet).permit(:name, :password)
+      params.require(:user).permit(:name, :password)
   end
 
 end
