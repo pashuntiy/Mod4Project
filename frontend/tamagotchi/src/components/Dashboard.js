@@ -29,8 +29,8 @@ export default class Dashboard extends Component {
                     "Accept": "application/json"
                 },
                 body: JSON.stringify({
-                    user: this.props.userID,
-                    pet: pet.id
+                    user_id: this.props.userID,
+                    pet_id: pet.id
                 })
             })
             .then(r => r.json)
