@@ -92,7 +92,7 @@ code {
 .pet-collection {
   display: grid;
   margin-left: 100px;
-  grid-template-columns: repeat(auto-fill, minmax(45vw, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: minmax(30vw, auto);
   grid-gap: 15px;
 }
