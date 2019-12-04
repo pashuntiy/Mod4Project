@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :adopt_pets
-  has_many :pets, through: :adopt_pets  
+  has_many :pets, through: :adopt_pets
 
   has_secure_password
 

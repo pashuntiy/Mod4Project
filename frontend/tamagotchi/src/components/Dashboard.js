@@ -15,7 +15,6 @@ export default class Dashboard extends Component {
             selectedPet: pet,
             seePet: !this.state.seePet
         })
-        console.log(pet)
     }
 
     componentDidMount(){

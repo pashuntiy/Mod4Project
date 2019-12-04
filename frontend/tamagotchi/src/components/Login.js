@@ -38,13 +38,15 @@ export default class Login extends Component {
         } else {
           this.props.setToken(resp)
         }
-      this.setState({
-        username: "",
-        password: ""
-      })
     })
   }
 
+  componentDidMount(){
+    this.setState({
+      username: "",
+      password: ""
+    })
+  }
 
     render() {
         return (
