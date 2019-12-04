@@ -19,11 +19,20 @@ class AdoptPetsController < ApplicationController
     adopt_pet.destroy
   end
 
+  def update
+    adopt_pet = AdoptPet.find(params[:id])
+    adopt_pet.update(adopt_update_params)
+    render json: adopt_pet
+  end
 
   private
 
   def adopt_params
       params.permit(:user_id, :pet_id)
+  end
+
+  def adopt_update_params
+    params.require(:adopt_pet).permit(:hunger, :social, :fun, :hygiene)
   end
 
 end
