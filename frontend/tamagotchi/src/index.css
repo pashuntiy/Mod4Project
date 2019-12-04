@@ -91,9 +91,8 @@ code {
 
 .pet-collection {
   display: grid;
-  margin-left: 100px;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: minmax(30vw, auto);
+  grid-auto-rows: minmax(25vw, auto);
   grid-gap: 15px;
 }
 

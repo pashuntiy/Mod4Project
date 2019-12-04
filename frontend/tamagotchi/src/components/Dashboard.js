@@ -20,8 +20,8 @@ export default class Dashboard extends Component {
     }
 
     adoptAPet = (pet) => {
-        console.log(pet.id)
-        if(!this.state.myPets.includes(pet)){
+        // debugger
+        if(!this.state.myPets.find(element => element.id === pet.id)){
             fetch("http://localhost:3000/adopt_pets", {
                 method: "POST",
                 headers: {
@@ -38,7 +38,6 @@ export default class Dashboard extends Component {
                 this.setState({
                     myPets: [...this.state.myPets, pet]
                 })
-                console.log(resObj)
             })
         } else {
             alert("You've already adopted this pet!")
@@ -86,9 +85,9 @@ export default class Dashboard extends Component {
             <NavBar onClick={this.props.logOutClick} username={this.state.username} />
 
         <h3>All Pets</h3>
-        <PetCollection pets={this.state.allPets} handleClick={this.handleAllPetsClick} buttonText="Adopt Me"/>
+        <PetCollection pets={this.state.allPets} handleClick={this.handleAllPetsClick} myPetCollection={false} buttonText="Adopt Me"/>
         <h3>My Pets</h3>
-        <PetCollection pets={this.state.myPets} handleClick={this.handleMyPetsClick} buttonText="Play with Me"/>
+        <PetCollection pets={this.state.myPets} handleClick={this.handleMyPetsClick} myPetCollection={true} buttonText="Play with Me"/>
         </div>
 
         return(

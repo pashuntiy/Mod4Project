@@ -16,6 +16,15 @@ export default class App extends Component {
         })
     }
 
+    componentWillUnmount(){
+        localStorage.clear()
+
+        this.setState({
+            loggedInUserId: null,
+            token: null
+        })
+    }
+
 
     setToken = event => {
       localStorage.token = event.token
