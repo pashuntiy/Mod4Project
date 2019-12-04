@@ -42,10 +42,10 @@ export default class Login extends Component {
   }
 
   componentWillUnmount(){
-      this.setState({
-          username: "",
-          password: ""
-      })
+    this.setState({
+      username: "",
+      password: ""
+    })
   }
 
     render() {
