@@ -22,8 +22,10 @@ class Signup extends React.Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
+        user:{
         username: this.state.username,
         password: this.state.password
+      }
       })
     })
     .then(r => r.json())
