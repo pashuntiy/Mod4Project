@@ -8,9 +8,10 @@
 
 #
 
+AdoptPet.destroy_all
 User.destroy_all
 Pet.destroy_all
-AdoptPet.destroy_all
+
 
 user1 = User.create(username: 'Ethan', password: '123')
 user2 = User.create(username: 'Pavel', password: '123')
