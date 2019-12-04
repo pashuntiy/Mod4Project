@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 2019_12_02_213702) do
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
-    t.integer "hunger", default: 100
-    t.integer "social", default: 100
-    t.integer "fun", default: 100
-    t.integer "hygiene", default: 100
+    t.integer "hunger", default: 5
+    t.integer "social", default: 5
+    t.integer "fun", default: 5
+    t.integer "hygiene", default: 5
     t.string "image"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

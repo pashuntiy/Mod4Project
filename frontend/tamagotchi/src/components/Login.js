@@ -4,21 +4,63 @@ export default class Login extends Component {
 
     state = {
         username: "",
-        password: ""
+        password: "",
+        errors: []
     }
+
+
+    onChange = event => {
+      this.setState({
+        [event.target.name]: event.target.value
+      })
+    }
+
+    submitClick = event => {
+      event.preventDefault()
+      fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password
+        })
+      })
+      .then(r => r.json())
+      .then(resp => {
+        if (resp.errors) {
+          this.setState({
+            errors: resp.errors,
+            username: "",
+            password: ""
+          })
+        } else {
+          this.props.setToken(resp)
+        }
+      this.setState({
+        username: "",
+        password: ""
+      })
+    })
+  }
+
 
     render() {
         return (
             <div className="login">
+
+              {this.state.errors.map(error => <p>{ error }</p>)}
+
                 <h1>Hello from Login</h1>
                 <form>
                     <label>Username: </label>
-                    <input name="username" type="text"/>
+                    <input onChange={this.onChange} name="username" type="text"/>
                     <br />
                     <label>Password: </label>
-                    <input name="password" type="text"/>
+                    <input onChange={this.onChange} name="password" type="text"/>
                     <br />
-                    <button>Submit</button>
+                    <button onClick={this.submitClick}>Submit</button>
                 </form>
             </div>
         )
