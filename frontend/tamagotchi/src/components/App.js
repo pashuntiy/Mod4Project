@@ -5,7 +5,7 @@ import Dashboard from './Dashboard'
 export default class App extends Component {
 
     state = {
-        isLoggedIn: false
+        isLoggedIn: true
     }
 
     render(){

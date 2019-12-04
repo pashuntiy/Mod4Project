@@ -15,7 +15,7 @@ export default class App extends Component {
         fun: 5,
         hygiene: 5,
         mood: "sad",
-        timer: 0,
+        // timer: 0,
         intervalId: null
     }
 
@@ -39,7 +39,7 @@ export default class App extends Component {
                 fun: newFunState,
                 hygiene: newHygieneState
             }, () => this.changeMood())
-        }, 30000)
+        }, 5000)
     }
 
     changeMood = () => {
@@ -64,8 +64,7 @@ export default class App extends Component {
 
     saveGame = () => {
         this.pauseGame()
-        console.log("clicked")
-        fetch("http://localhost:3000/pets/1", {
+        fetch(`http://localhost:3000/pets/${this.props.pet.id}`, {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
@@ -78,16 +77,24 @@ export default class App extends Component {
                 hygiene: this.state.hygiene
             })
         })
-            .then(r => r.json())
-            .then(resObj => {
-                console.log(resObj)
-            })
     }
 
     componentDidMount() {
         const intervalId = this.decreaseStats()
         this.setState({
             intervalId: intervalId
+        })
+        fetch(`http://localhost:3000/pets/${this.props.pet.id}`)
+        .then(r => r.json())
+        .then(resObj => {
+            this.setState({
+                hunger: resObj.hunger,
+                social: resObj.social,
+                fun: resObj.fun,
+                hygiene: resObj.hygiene
+            }, () => {
+                this.changeMood()
+            })
         })
     }
 
@@ -101,7 +108,7 @@ export default class App extends Component {
                 <header>
                 </header>
                 <button onClick={this.props.handleClick}>See Your Dashboard</button>
-                <PetImage picture={this.state.picture} />
+                <PetImage pet={this.props.pet} />
                 <Stats hunger={this.state.hunger} social={this.state.social} fun={this.state.fun} hygiene={this.state.hygiene} />
                 <Actions hunger={this.state.hunger} social={this.state.social} fun={this.state.fun} hygiene={this.state.hygiene} increaseStats={this.increaseStats} />
                 <Mood mood={this.state.mood} />

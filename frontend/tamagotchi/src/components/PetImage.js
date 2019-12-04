@@ -7,7 +7,7 @@ export default class PetImage extends Component {
     }
 
     componentDidMount(){
-        fetch("http://localhost:3000/pets/1")
+        fetch(`http://localhost:3000/pets/${this.props.pet.id}`)
             .then(r => r.json())
             .then(resObj => {
                 this.setState({

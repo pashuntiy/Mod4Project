@@ -14,7 +14,8 @@ code {
 
 .pet-image {
   padding: 4%;
-  width: 40%;
+  max-height: 40%;
+  max-width: 40%;
   float: left;
 }
 
@@ -87,12 +88,20 @@ code {
   cursor: pointer;
 }
 
-.dashboard {
-  text-align: center;
+.pet-collection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(30vw, auto);
+  grid-gap: 15px;
 }
 
-.dashboard img {
-  width: 10%;
+.dashboard {
+  text-align: center;
+
+}
+
+.pet-collection img {
+  max-height: 50%;
 }
 
 .dashboard button {
