@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Pet from './Pet'
 import PetCollection from './PetCollection'
 import NavBar from './NavBar'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 export default class Dashboard extends Component {
 
@@ -113,10 +114,10 @@ export default class Dashboard extends Component {
     }
 
 
+    //
 
     render(){
-        const petDiv =
-        <Pet pet={this.state.selectedPet} seePet={this.state.seePet} handleClick={this.handlePetClick} userID={this.props.userID} />
+        let petDiv = <Pet pet={this.state.selectedPet} seePet={this.state.seePet} handleClick={this.handlePetClick} userID={this.props.userID} />
 
         const dashboardDiv =
         <div className="dashboard">
@@ -135,3 +136,4 @@ export default class Dashboard extends Component {
         )
     }
 }
+

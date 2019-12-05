@@ -125,16 +125,15 @@ export default class App extends Component {
                 </header>
                 <button onClick={this.props.handleClick}>See Your Dashboard</button>
                 <PetImage pet={this.props.pet} />
-                <Stats hunger={this.state.hunger} social={this.state.social} 
+                <Stats hunger={this.state.hunger} social={this.state.social}
                 fun={this.state.fun} hygiene={this.state.hygiene} />
-                <Actions hunger={this.state.hunger} social={this.state.social} 
-                fun={this.state.fun} hygiene={this.state.hygiene} 
+                <Actions hunger={this.state.hunger} social={this.state.social}
+                fun={this.state.fun} hygiene={this.state.hygiene}
                 increaseStats={this.increaseStats} increaseSocialStats={this.increaseSocialStats}
                 pauseGame={this.pauseGame} resumeGame={this.resumeGame}/>
                 <Mood mood={this.state.mood} />
                 {this.state.paused? (<Resume handleClick={this.resumeGame} />) : (<Pause handleClick={this.pauseGame} />)}
                 <Save handleClick={this.saveGame} />
-                
             </div>
         )
     }
