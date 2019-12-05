@@ -16,7 +16,7 @@ export default class Welcome extends Component {
     render(){
         return(
             <div className="welcome">
-                <h1>Hello from the Welcome Page!</h1>
+                <h1>Welcome to Pets and Friends!</h1>
                 {this.state.returningUser ? (<button onClick={this.handleClick}>I'm a new user!</button>) : (<button onClick= { this.handleClick }>I'm a returning user!</button>)}
 
                  {this.state.returningUser ? (<Login setToken={this.props.setToken} />) : (<Signup setToken={this.props.setToken} />)}
