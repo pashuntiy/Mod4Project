@@ -21,7 +21,7 @@ export default class App extends Component {
         paused: false
     }
 
-    increaseStats = (event, num) => {
+    increaseStats = (event, num=1) => {
         const stateName = event.target.name
         this.setState({
             [stateName]: this.state[stateName] + num
