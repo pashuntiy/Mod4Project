@@ -17,42 +17,54 @@ const customStyles = {
 export default class Actions extends Component {
 
   state = {
-    // play: false
-    showModal: false
+    showModal: false,
+    intervalID: null,
+    timer: 0
   }
 
-//   onClickModal = () => {
-//     this.setState({
-//       play: !this.state.play
-//     })
-//   }
+    handleTimer = () => {
+        return window.setInterval(() => {
+            this.setState({
+                timer: this.state.timer + 1
+            }, console.log(this.state.timer))
+        }, 1000)
+    }
 
     handleOpenModal = () => {
+        this.props.pauseGame()
         this.setState({
             showModal: true
         })
+        const intervalId = this.handleTimer()
+        this.setState({
+            intervalId: intervalId
+        })
     }
 
-    handleCloseModal = () => {
+    handleCloseModal = (event) => {
+        this.props.resumeGame()
         this.setState({
             showModal: false
         })
+        window.clearInterval(this.state.intervalId)
+        this.props.increaseStats(event, this.state.timer)
+        this.setState({
+            timer: 0,
+            intervalID: null
+        })
+
     }
 
     render(){
         return(
             <div className="actions">
                 <h1>Actions</h1>
-
-
-                  {/* {this.state.play ? <TalkToMe onClose={this.onClickModal} show={this.state.play}/> : ''} */}
                 <ul>
                     <li><button onClick={(event) => this.props.increaseStats(event)}name="hunger">Feed Me</button></li>
-                    {/* <li onClick={() => this.onClickModal()}><button onClick={(event) => this.props.increaseStats(event)}name="social">Talk to Me</button></li> */}
-                    <li onClick={this.handleOpenModal}><button onClick={(event) => this.props.increaseStats(event)} name="social">Talk to Me</button></li>
-                    <ReactModal isOpen={this.state.showModal} style={customStyles}>
+                    <li><button onClick={this.handleOpenModal}>Talk to Me</button></li>
+                    <ReactModal onKeyPress={this.handleKeyPress} isOpen={this.state.showModal} style={customStyles}>
                         <TalkToMe/>
-                        <button onClick={this.handleCloseModal}>End Conversation</button>
+                        <button name="social" onClick={(event) => this.handleCloseModal(event)}>End Conversation</button>
                     </ReactModal>
                     <li><button onClick={(event) => this.props.increaseStats(event)}name="fun">Play with Me</button></li>
                     <li><button onClick={(event) => this.props.increaseStats(event)}name="hygiene">Wash Me</button></li>
