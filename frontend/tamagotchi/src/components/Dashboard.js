@@ -14,6 +14,30 @@ export default class Dashboard extends Component {
         adoptPetID: null
     }
 
+
+    componentDidMount(){
+        fetch("http://localhost:3000/pets")
+        .then(r => r.json())
+        .then(resObj => {
+            this.setState({
+                allPets: resObj
+            })
+            fetch(`http://localhost:3000/users/${this.props.userID}`)
+            .then(r => r.json())
+            .then(resObj => {
+                this.setState({
+                    myPets: resObj.pets,
+                    username: resObj.username
+                })
+            })
+        })
+    }
+
+
+
+
+
+
     handleAllPetsClick = (pet) => {
         this.setState({
             selectedPet: pet
@@ -88,23 +112,7 @@ export default class Dashboard extends Component {
         })
     }
 
-    componentDidMount(){
-        fetch("http://localhost:3000/pets")
-        .then(r => r.json())
-        .then(resObj => {
-            this.setState({
-                allPets: resObj
-            })
-        })
-        fetch(`http://localhost:3000/users/${this.props.userID}`)
-        .then(r => r.json())
-        .then(resObj => {
-            this.setState({
-                myPets: resObj.pets,
-                username: resObj.username
-            })
-        })
-    }
+
 
     render(){
         const petDiv =

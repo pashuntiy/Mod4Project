@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Dashboard from './Dashboard'
 import Welcome from './Welcome'
+import { Route, Switch, Redirect } from 'react-router-dom'
+
 
 export default class App extends Component {
 
@@ -48,8 +50,18 @@ export default class App extends Component {
     render(){
         return(
             <div>
-                {!!this.state.token ? (<Dashboard userID={this.state.loggedInUserId} logOutClick={this.logOutClick}/>) : (<Welcome setToken={this.setToken}/> )}
+
+            <Switch>
+              <Route path="/hello" render={ (props) => <Welcome {...props} setToken={this.setToken}/> } />
+              <Route path="/dashboard" render={ (props) =>  <Dashboard {...props} userID={this.state.loggedInUserId} logOutClick={this.logOutClick}/> } />
+              <Route exact path='/' render = { () => <Redirect to="/hello" /> } />
+            </Switch>
+
+            {this.state.token ? <Redirect to="/dashboard" /> : <Redirect to="/hello" />}
+
             </div>
         )
     }
 }
+
+// {!!this.state.token ? (<Dashboard userID={this.state.loggedInUserId} logOutClick={this.logOutClick}/>) : (<Welcome setToken={this.setToken}/> )}

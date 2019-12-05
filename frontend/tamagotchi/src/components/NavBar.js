@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class NavBar extends Component {
 
@@ -6,9 +7,9 @@ export default class NavBar extends Component {
         return(
             <div className="navbar">
                 <h1>Welcome, {this.props.username}</h1>
-                <button className="logout" onClick={this.props.onClick}>Logout</button>
+                <button className="logout" onClick={this.props.onClick}><Link to='/hello'>Logout</Link></button>
             </div>
-      
+
         )
     }
 }

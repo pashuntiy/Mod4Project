@@ -43,8 +43,6 @@ export default class Actions extends Component {
         return(
             <div className="actions">
                 <h1>Actions</h1>
-
-
                   {/* {this.state.play ? <TalkToMe onClose={this.onClickModal} show={this.state.play}/> : ''} */}
                 <ul>
                     <li><button onClick={(event) => this.props.increaseStats(event)}name="hunger">Feed Me</button></li>

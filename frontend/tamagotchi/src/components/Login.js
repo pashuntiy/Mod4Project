@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Login extends Component {
 
@@ -62,7 +63,7 @@ export default class Login extends Component {
                     <label>Password: </label>
                     <input onChange={this.onChange} name="password" type="text"/>
                     <br />
-                    <button onClick={this.submitClick}>Submit</button>
+                    <button onClick={this.submitClick}><Link to='/dashboard'>Submit</Link></button>
                 </form>
             </div>
         )
