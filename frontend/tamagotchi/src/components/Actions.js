@@ -19,7 +19,6 @@ export default class Actions extends Component {
                 <ul>
                    
                     <li><FeedMe pauseGame={this.props.pauseGame} resumeGame={this.props.resumeGame} increaseStats={this.props.increaseStats} /></li>
-
                     <li><TalkToMe pauseGame={this.props.pauseGame} resumeGame={this.props.resumeGame} increaseStats={this.props.increaseStats}/></li>
                     <li><button onClick={(event) => this.props.increaseStats(event)}name="fun">Play with Me</button></li>
                     <li><button onClick={(event) => this.props.increaseStats(event)}name="hygiene">Wash Me</button></li>
