@@ -34,8 +34,17 @@ export default class FeedMe extends React.Component {
 
     handleClick = (event) => {
         const stateName = event.target.name
-        const thesePoints = parseInt(event.target.dataset.points)
-        console.log(thesePoints)
+        let thesePoints = 0
+
+        if (isNaN(event.target.dataset.points)){
+          thesePoints = 0
+        }
+        else {
+          thesePoints = parseInt(event.target.dataset.points)
+        }
+
+
+        console.log(this.state.points)
         this.setState({
             [stateName]: !this.state[stateName],
             points: this.state.points + thesePoints
@@ -48,7 +57,7 @@ export default class FeedMe extends React.Component {
                 <button onClick={this.handleOpenModal}>Feed Me</button>
                 <ReactModal isOpen={this.state.showModal} className="hungerModal">
                     <img alt="hotdog" name="hotdog" data-points="5" onClick={this.handleClick} src={require("../imgs/hotdog.gif")} />
-                    <img alt="pancakes" name="pancakes" onClick={this.handleClick} src={require("../imgs/pancakes.png")} />
+                    <img alt="pancakes" name="pancakes" data-points="10" onClick={this.handleClick} src={require("../imgs/pancakes.png")} />
                     <img alt="cupcake" name="cupcake" onClick={this.handleClick} src={require("../imgs/cupcake.png")} />
                     <img alt="pizza" name="pizza" onClick={this.handleClick} src={require("../imgs/pizza.png")} />
                     <br />
