@@ -5,7 +5,7 @@ import Actions from './Actions'
 import Mood from './Mood'
 import Pause from './Pause'
 import Save from './Save'
-// import Timer from './Timer'
+import Resume from './Resume'
 
 export default class App extends Component {
 
@@ -17,7 +17,8 @@ export default class App extends Component {
         mood: "sad",
         // timer: 0,
         intervalId: null,
-        adoptPetID: null
+        adoptPetID: null,
+        paused: false
     }
 
     increaseStats = (event) => {
@@ -61,6 +62,17 @@ export default class App extends Component {
 
     pauseGame = () => {
         window.clearInterval(this.state.intervalId)
+        this.setState({
+            paused: true
+        })
+    }
+
+    resumeGame = () => {
+        const intervalId = this.decreaseStats()
+        this.setState({
+            intervalId: intervalId,
+            paused: false
+        })
     }
 
     saveGame = () => {
@@ -116,8 +128,7 @@ export default class App extends Component {
                 <Stats hunger={this.state.hunger} social={this.state.social} fun={this.state.fun} hygiene={this.state.hygiene} />
                 <Actions hunger={this.state.hunger} social={this.state.social} fun={this.state.fun} hygiene={this.state.hygiene} increaseStats={this.increaseStats} />
                 <Mood mood={this.state.mood} />
-                {/* <Timer handleClick={this.decreaseStats}/> */}
-                <Pause handleClick={this.pauseGame} />
+                {this.state.paused? (<Resume handleClick={this.resumeGame} />) : (<Pause handleClick={this.pauseGame} />)}
                 <Save handleClick={this.saveGame} />
                 
             </div>

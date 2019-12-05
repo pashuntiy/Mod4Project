@@ -3,7 +3,6 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :pets, through: :adopt_pets
   has_many :adopt_pets
-
 end
 
 

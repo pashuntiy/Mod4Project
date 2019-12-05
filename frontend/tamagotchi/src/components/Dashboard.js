@@ -10,7 +10,8 @@ export default class Dashboard extends Component {
         allPets: [],
         myPets: [],
         username: "",
-        selectedPet: {}
+        selectedPet: {},
+        adoptPetID: null
     }
 
     handleAllPetsClick = (pet) => {
@@ -45,6 +46,33 @@ export default class Dashboard extends Component {
             alert("You've already adopted this pet!")
         }
 
+    }
+
+    givePetUp = (pet) => {
+        alert("Are you sure you want to give me up? :(")
+        fetch(`http://localhost:3000/users/${this.props.userID}`)
+        .then(r => r.json())
+        .then(resObj => {
+            const thisPet = resObj.adopt_pets.find(element => element.pet_id === pet.id)
+            // console.log(thisPet)
+            this.setState({
+                adoptPetID: thisPet.id
+             }, () => this.unadoptPet(pet))
+        })
+    }
+
+    unadoptPet = (pet) => {
+        fetch(`http://localhost:3000/adopt_pets/${this.state.adoptPetID}`, {
+            method: "DELETE"
+        })
+        .then(() => {
+            const newPets = this.state.myPets.filter((eachPet) => {
+                return eachPet !== pet
+            })
+            this.setState({
+                myPets: newPets
+            })
+        })
     }
 
     handleMyPetsClick = (pet) => {
@@ -89,7 +117,7 @@ export default class Dashboard extends Component {
         <h3>All Pets</h3>
         <PetCollection pets={this.state.allPets} handleClick={this.handleAllPetsClick} myPetCollection={false} buttonText="Adopt Me"/>
         <h3>My Pets</h3>
-        <PetCollection pets={this.state.myPets} handleClick={this.handleMyPetsClick} myPetCollection={true} buttonText="Play with Me"/>
+                <PetCollection pets={this.state.myPets} handleClick={this.handleMyPetsClick} myPetCollection={true} buttonText="Play with Me" givePetUp={this.givePetUp}/>
         </div>
 
         return(
