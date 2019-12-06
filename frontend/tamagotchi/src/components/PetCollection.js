@@ -16,9 +16,7 @@ export default class PetCollection extends Component {
                     return <PetCard pet={pet} handleClick={this.props.handleClick} key={pet.id} buttonText={this.props.buttonText} myPetCollection={this.props.myPetCollection} givePetUp={this.props.givePetUp} />
                 })
             })
-        } else {
-            return(<Redirect to="/welcome" />)
-        }
+        } 
     }
 
     render(){
@@ -27,7 +25,8 @@ export default class PetCollection extends Component {
         return(
 
             <div className="pet-collection">
-                {this.state.renderedPets}
+                {console.log(this.state.renderedPets)}
+                {this.state.renderedPets.length === 0 ? (<Redirect to="/welcome" />) : this.state.renderedPets}
             </div>
         )
     }
