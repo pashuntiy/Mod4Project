@@ -1,18 +1,33 @@
 import React, { Component } from 'react'
 import PetCard from './PetCard'
+import { Route, Switch, Redirect } from 'react-router-dom'
+
 
 export default class PetCollection extends Component {
 
-    render(){
-        const renderedPets = this.props.pets.map((pet) => {
-            return <PetCard pet={pet} handleClick={this.props.handleClick} key={pet.id} buttonText={this.props.buttonText} myPetCollection={this.props.myPetCollection} givePetUp={this.props.givePetUp}/>
+    state = {
+        renderedPets: []
+    }
 
-        })
+    componentDidMount(){
+        if (this.props.pets !== undefined) {
+            this.setState({
+                renderedPets: this.props.pets.map((pet) => {
+                    return <PetCard pet={pet} handleClick={this.props.handleClick} key={pet.id} buttonText={this.props.buttonText} myPetCollection={this.props.myPetCollection} givePetUp={this.props.givePetUp} />
+                })
+            })
+        } else {
+            return(<Redirect to="/welcome" />)
+        }
+    }
+
+    render(){
+       
 
         return(
 
             <div className="pet-collection">
-                {renderedPets}
+                {this.state.renderedPets}
             </div>
         )
     }
