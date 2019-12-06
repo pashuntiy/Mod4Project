@@ -15,21 +15,6 @@ ActiveRecord::Schema.define(version: 2019_12_04_200944) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "action_types", force: :cascade do |t|
-    t.string "type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "actions", force: :cascade do |t|
-    t.bigint "pet_id", null: false
-    t.bigint "action_type_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["action_type_id"], name: "index_actions_on_action_type_id"
-    t.index ["pet_id"], name: "index_actions_on_pet_id"
-  end
-
   create_table "adopt_pets", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "pet_id", null: false
@@ -57,8 +42,6 @@ ActiveRecord::Schema.define(version: 2019_12_04_200944) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "actions", "action_types"
-  add_foreign_key "actions", "pets"
   add_foreign_key "adopt_pets", "pets"
   add_foreign_key "adopt_pets", "users"
 end
