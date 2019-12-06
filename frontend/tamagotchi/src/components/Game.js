@@ -57,10 +57,10 @@ export default class Game extends Component {
     render(){
         return(
             <div>
-                <h5>Try to Guess the Number! Between 1 and 100</h5>
+                <h1>Try to Guess the Number!</h1> 
+                 <h2>Between 1 and 100</h2>
                 <input type="number" value={this.state.guessedNumber} onChange={(event) => this.handleChange(event)}/>
                 <button onClick={this.handleClick}>Guess</button>
-                <br />
                 <button onClick={this.handlePlayAgainClick}>Play Again</button>
             </div>
         )

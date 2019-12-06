@@ -3,18 +3,6 @@ import "../index.css";
 import ReactModal from 'react-modal'
 
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
-
-
 export default class TalkToMe extends React.Component {
 
   state = {
@@ -60,7 +48,7 @@ export default class TalkToMe extends React.Component {
     return (
     <div>
       <button onClick={this.handleOpenModal}>Talk to Me</button>
-      <ReactModal isOpen={this.state.showModal} style={customStyles}>
+      <ReactModal isOpen={this.state.showModal} className="socialModal">
         <div>
           <iframe
             allow="microphone;"

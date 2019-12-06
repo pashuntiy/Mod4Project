@@ -122,9 +122,9 @@ export default class Dashboard extends Component {
         <div className="dashboard">
             <NavBar onClick={this.props.logOutClick} username={this.state.username} />
 
-        <h3>All Pets</h3>
+        <h2>All Pets</h2>
         <PetCollection pets={this.state.allPets} handleClick={this.handleAllPetsClick} myPetCollection={false} buttonText="Adopt Me"/>
-        <h3>My Pets</h3>
+        <h2>My Pets</h2>
                 <PetCollection pets={this.state.myPets} handleClick={this.handleMyPetsClick} myPetCollection={true} buttonText="Play with Me" givePetUp={this.givePetUp}/>
         </div>
 

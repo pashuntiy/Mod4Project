@@ -2,19 +2,6 @@ import React from "react";
 import "../index.css";
 import ReactModal from 'react-modal'
 
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
-    }
-};
-
-
 export default class TalkToMe extends React.Component {
 
     state = {
@@ -50,10 +37,10 @@ export default class TalkToMe extends React.Component {
         return (
             <div>
                 <button onClick={this.handleOpenModal}>Wash Me</button>
-                <ReactModal isOpen={this.state.showModal} style={customStyles}>
+                <ReactModal isOpen={this.state.showModal} className="hygieneModal">
                     <div>
-                       <h1>Click the soap to wash your pet!</h1>
-                        <img alt="soap" onClick={this.handleClick} src={require("../imgs/soap.jpg")} />
+                       <h1>Click to wash your pet!</h1>
+                        <img alt="soap" onClick={this.handleClick} src={require("../imgs/bath.gif")} />
                         <h3>Hygiene Points: {this.state.points}</h3>
                     </div>
                     <button name="hygiene" onClick={(event) => this.handleCloseModal(event)}>Finish Bath</button>

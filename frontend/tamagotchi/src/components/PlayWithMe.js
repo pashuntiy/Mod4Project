@@ -4,19 +4,7 @@ import ReactModal from 'react-modal'
 import Game from './Game'
 
 
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
-    }
-};
-
-
-export default class TalkToMe extends React.Component {
+export default class PlayWithMe extends React.Component {
 
     state = {
         showModal: false,
@@ -61,7 +49,7 @@ export default class TalkToMe extends React.Component {
         return (
             <div>
                 <button onClick={this.handleOpenModal}>Play With Me</button>
-                <ReactModal isOpen={this.state.showModal} style={customStyles}>
+                <ReactModal isOpen={this.state.showModal} className="gameModal">
                     <div>
                       <Game />
                     </div>
