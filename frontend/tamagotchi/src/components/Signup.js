@@ -77,13 +77,13 @@ class Signup extends React.Component {
 
             {this.state.errors.map(error => <p>{ error }</p>)}
 
-              <h1>Signup</h1>
+              <h2>Signup</h2>
               <form>
                   <label>Username: </label>
                   <input onChange={this.onChange} name="username" type="text"/>
                   <br />
                   <label>Password: </label>
-                  <input onChange={this.onChange} name="password" type="text"/>
+                  <input onChange={this.onChange} name="password" type="password"/>
                   <br />
                   <button onClick={this.submitClick}><Link to='/hello'>Submit</Link></button>
               </form>

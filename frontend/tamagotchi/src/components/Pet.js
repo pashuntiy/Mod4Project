@@ -120,10 +120,10 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="pet">
+            <div>
                 <header>
                 </header>
-                <button onClick={this.props.handleClick}>See Your Dashboard</button>
+                <button className="dashboard-button" onClick={this.props.handleClick}>See Your Dashboard</button>
                 <PetImage pet={this.props.pet} />
                 <Stats hunger={this.state.hunger} social={this.state.social}
                 fun={this.state.fun} hygiene={this.state.hygiene} />
