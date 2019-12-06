@@ -85,7 +85,8 @@ class Signup extends React.Component {
                   <label>Password: </label>
                   <input onChange={this.onChange} name="password" type="password"/>
                   <br />
-                  <button onClick={this.submitClick}><Link to='/hello'>Submit</Link></button>
+                  <button onClick={this.submitClick}>  {this.state.password === '' ? <Link to='/welcome'>Submit</Link> : <Link to='/dashboard'>Submit</Link>}</button>
+
               </form>
           </div>
       )
