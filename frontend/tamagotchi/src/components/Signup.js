@@ -31,7 +31,6 @@ class Signup extends React.Component {
     })
     .then(r => r.json())
     .then(resp => {
-        console.log(resp)
         if (resp.errors) {
         this.setState({
           errors: [...this.state.errors, resp.errors],

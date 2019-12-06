@@ -33,6 +33,10 @@ export default class TalkToMe extends React.Component {
         })
     }
 
+    componentDidMount() {
+        ReactModal.setAppElement('body');
+    }
+
     render() {
         return (
             <div>

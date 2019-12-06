@@ -16,7 +16,7 @@ export default class PlayWithMe extends React.Component {
         return window.setInterval(() => {
             this.setState({
                 timer: this.state.timer + 1
-            }, console.log(this.state.timer))
+            })
         }, 1000)
     }
 
@@ -43,6 +43,10 @@ export default class PlayWithMe extends React.Component {
             intervalID: null
         })
 
+    }
+
+    componentDidMount() {
+        ReactModal.setAppElement('body');
     }
 
     render() {

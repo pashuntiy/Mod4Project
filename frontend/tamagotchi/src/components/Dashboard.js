@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Pet from './Pet'
 import PetCollection from './PetCollection'
 import NavBar from './NavBar'
-import { Route, Switch, Redirect } from 'react-router-dom'
 
 export default class Dashboard extends Component {
 
@@ -14,7 +13,6 @@ export default class Dashboard extends Component {
         selectedPet: {},
         adoptPetID: null
     }
-
 
     componentDidMount(){
         fetch("http://localhost:3000/pets")
@@ -33,11 +31,6 @@ export default class Dashboard extends Component {
             })
         })
     }
-
-
-
-
-
 
     handleAllPetsClick = (pet) => {
         this.setState({

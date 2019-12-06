@@ -52,12 +52,12 @@ export default class App extends Component {
             <div>
 
             <Switch>
-              <Route path="/hello" render={ (props) => <Welcome {...props} setToken={this.setToken}/> } />
+              <Route path="/welcome" render={ (props) => <Welcome {...props} setToken={this.setToken}/> } />
               <Route path="/dashboard" render={ (props) =>  <Dashboard {...props} userID={this.state.loggedInUserId} logOutClick={this.logOutClick}/> } />
-              <Route exact path='/' render = { () => <Redirect to="/hello" /> } />
+              <Route exact path='/' render = { () => <Redirect to="/welcome" /> } />
             </Switch>
 
-            {this.state.token ? <Redirect to="/dashboard" /> : <Redirect to="/hello" />}
+            {this.state.token ? <Redirect to="/dashboard" /> : <Redirect to="/welcome" />}
 
             </div>
         )

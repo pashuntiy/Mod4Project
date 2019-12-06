@@ -36,7 +36,6 @@ export default class Game extends Component {
     }
 
     handlePlayAgainClick = () => {
-        console.log("clicked")
         this.generateRandomNumber()
         this.setState({
             guessedNumber: 0

@@ -49,13 +49,10 @@ export default class FeedMe extends React.Component {
             else {
                 thesePoints = parseInt(event.target.dataset.points)
             }
-
-
-            console.log(this.state.points)
             this.setState({
                 [stateName]: true,
                 points: this.state.points + thesePoints
-            }, console.log(this.state.points))
+            })
         }
 
     }
@@ -70,13 +67,14 @@ export default class FeedMe extends React.Component {
         else {
             thesePoints = parseInt(event.target.dataset.points)
         }
-
-
-        console.log(this.state.points)
         this.setState({
             [stateName]: false,
             points: this.state.points - thesePoints
-        }, console.log(this.state.points))
+        })
+    }
+
+    componentDidMount() {
+        ReactModal.setAppElement('body');
     }
 
     render() {

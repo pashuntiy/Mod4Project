@@ -15,7 +15,7 @@ export default class TalkToMe extends React.Component {
     return window.setInterval(() => {
       this.setState({
         timer: this.state.timer + 1
-      }, console.log(this.state.timer))
+      })
     }, 1000)
   }
 
@@ -44,6 +44,10 @@ export default class TalkToMe extends React.Component {
 
   }
 
+  componentDidMount() {
+    ReactModal.setAppElement('body');
+  }
+
   render() {
     return (
     <div>
@@ -51,6 +55,7 @@ export default class TalkToMe extends React.Component {
       <ReactModal isOpen={this.state.showModal} className="socialModal">
         <div>
           <iframe
+            title="Talk to Me Modal"
             allow="microphone;"
             width="350"
             height="430"
