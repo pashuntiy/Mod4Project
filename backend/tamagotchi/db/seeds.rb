@@ -22,7 +22,7 @@ pet2 = Pet.create(name: 'Sharik', image: 'http://clipart-library.com/img/729263.
 pet3 = Pet.create(name: Faker::Creature::Dog.name, image: 'http://clipart-library.com/img/729313.png')
 pet4 = Pet.create(name: Faker::Creature::Dog.name, image: 'http://clipart-library.com/img/729229.png')
 pet5 = Pet.create(name: Faker::Creature::Dog.name, image: 'http://clipart-library.com/img/729147.png')
-pet6 = Pet.create(name: Faker::Creature::Dog.name, image: 'http://clipart-library.com/img1/729286.gif')
+pet6 = Pet.create(name: Faker::Creature::Dog.name, image: 'http://clipart-library.com/images/ki85rLodT.png')
 pet7 = Pet.create(name: Faker::Creature::Dog.name, image: 'http://clipart-library.com/images_k/dog-clipart-transparent-background/dog-clipart-transparent-background-4.png')
 pet8 = Pet.create(name: Faker::Creature::Dog.name, image: 'http://clipart-library.com/img/729132.png')
 

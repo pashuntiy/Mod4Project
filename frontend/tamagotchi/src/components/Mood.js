@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Mood extends Component {
     renderImage = () => {
         if (this.props.mood === "happy") {
-            return <img alt="smiley" src={require("../imgs/happy-face-3.png")} />
+            return <img alt="smiley" src={require("../imgs/thumbsup2.png")} />
         } else if(this.props.mood === "dead") {
             return <img alt="dead" src={require("../imgs/RIP.png")}/>
         } else {
