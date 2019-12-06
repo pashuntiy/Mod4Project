@@ -31,9 +31,10 @@ class Signup extends React.Component {
     })
     .then(r => r.json())
     .then(resp => {
+        console.log(resp)
         if (resp.errors) {
         this.setState({
-          errors: resp.errors,
+          errors: [...this.state.errors, resp.errors],
           username: "",
           password: ""
         })
@@ -52,7 +53,7 @@ class Signup extends React.Component {
         .then(resp => {
           if (resp.errors) {
             this.setState({
-              errors: resp.errors,
+              errors: [...this.state.errors, resp.errors],
               username: "",
               password: ""
             })
@@ -67,7 +68,7 @@ class Signup extends React.Component {
   componentWillUnmount(){
     this.setState({
       username: "",
-      password: ""
+      password: "",
     })
   }
 

@@ -167,7 +167,7 @@ input:focus {
   font-size: 1rem;
   cursor: pointer;
 } */
-/* 
+/*
 .pet button {
   margin: 1%;
   padding: 1%;
@@ -229,8 +229,6 @@ input:focus {
   border: 2px solid black;
 } */
 
-<<<<<<< HEAD
-=======
 .gameModal {
     position: fixed;
     top: 50%;
@@ -297,6 +295,5 @@ input:focus {
   outline: none;
   border: 2px solid #3f72af;
 }
->>>>>>> d291293ab00a1e4ce9d07eea59ac2a350612da98
 
 
